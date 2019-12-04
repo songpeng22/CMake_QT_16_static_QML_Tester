@@ -253,8 +253,12 @@ SET( project_resources
     choose_qt_sdk.cmake
     recursive_search.cmake
     main.qrc
+	# Main
     main.qml
     method2.qml
+	# Controls
+	button_demo.qml
+	TabBar.qml
 )
 
 # Tell CMake to create the project executable

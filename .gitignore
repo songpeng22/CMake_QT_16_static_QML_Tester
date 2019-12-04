@@ -7,6 +7,8 @@ build*/
 [Tt]mp
 # Prerequisites
 *.d
+# qml
+*.qmlc
 
 # Compiled Object files
 *.slo

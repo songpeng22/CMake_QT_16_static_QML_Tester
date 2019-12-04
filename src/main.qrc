@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>method2.qml</file>
+		<file>button_demo.qml</file>
+		<file>TabBar.qml</file>
     </qresource>
 </RCC>

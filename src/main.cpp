@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("Bizerba.com");
     //Engine
     EngineReloaderWrapper engine;
-    QUrl url = QUrl(QStringLiteral("qrc:/main.qml"));
+    QUrl url = QUrl(QStringLiteral("qrc:/button_demo.qml"));
     engine.load(url);
 
     return app.exec();
