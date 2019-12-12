@@ -243,6 +243,7 @@ FILE(GLOB project_sources
     EngineReloader.cpp
     EngineReloaderWrapper.cpp
     Widget.cpp
+	QmlObjs.cpp
 )
 
 FILE(GLOB project_headers
@@ -287,7 +288,6 @@ target_link_libraries( ${project_name}
     ${QPLGDIR_namelist}
     ${QQMLDIR_namelist}
 ]]
-
 
 )
 

@@ -5,6 +5,7 @@
 
 //
 #include "GlobalVariant.h"
+#include "QmlObjs.h"
 
 EngineReloaderWrapper::EngineReloaderWrapper()
 {
@@ -62,6 +63,12 @@ void EngineReloaderWrapper::afterLoad()
     QMetaObject::invokeMethod(rootObject, "initQmlLoader",
             Q_RETURN_ARG(QVariant, returnedValue),
             Q_ARG(QVariant, file));
+
+    //错误的使用方法,not expose qml to c++
+    //CQmlObjs::Instance()->SetRootObject(rootObject);
+    //qDebug() << CQmlObjs::Instance()->GetObj("objButton1")->property("text").toString();
+    //CQmlObjs::Instance()->GetObj("objButton1")->setProperty("text", "Next");
+    //qDebug() << CQmlObjs::Instance()->GetObj("objButton1")->property("text").toString();
 }
 
 void EngineReloaderWrapper::setReloadSubQml( QString qsFile )

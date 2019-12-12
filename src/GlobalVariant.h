@@ -26,6 +26,17 @@ public:
     Q_INVOKABLE inline int value() {
         return m_value;
     }
+    Q_PROPERTY(QVariant textOfButton READ textOfButton )
+    QVariant textOfButton()
+    {
+        return QVariant("text1");
+    }
+    Q_INVOKABLE QVariant text2()
+    {
+        return QVariant("text2");
+    }
+signals:
+    void textChanged();
 public:
     static GlobalVariant * Instance()
     {
