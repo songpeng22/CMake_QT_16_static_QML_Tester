@@ -260,7 +260,13 @@ SET( project_resources
 	# Controls
 	button_demo.qml
 	TabBar.qml
+	busyindicator_demo.qml
 )
+
+#Same type together
+SOURCE_GROUP("Source Files" FILES ${project_sources})
+SOURCE_GROUP("Header Files" FILES ${project_headers})
+SOURCE_GROUP("Resource Files" FILES ${project_resources})
 
 # Tell CMake to create the project executable
 add_executable( ${project_name} WIN32 ${project_sources} ${project_headers} ${project_resources})
