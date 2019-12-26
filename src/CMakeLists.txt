@@ -271,10 +271,13 @@ SOURCE_GROUP("Resource Files" FILES ${project_resources})
 # Tell CMake to create the project executable
 add_executable( ${project_name} WIN32 ${project_sources} ${project_headers} ${project_resources})
 
-set_target_properties( ${project_name}
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin
-)
+# set_target_properties(target1 target2 ...PROPERTIES prop1 value1 prop2 value2 ...)
+# Output Path
+set_target_properties( ${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG	${CMAKE_BINARY_DIR}/../bin )
+set_target_properties( ${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE	${CMAKE_BINARY_DIR}/../bin )
+# Output Name
+SET_TARGET_PROPERTIES( ${project_name} PROPERTIES OUTPUT_NAME_DEBUG   "qmltester_d")
+SET_TARGET_PROPERTIES( ${project_name} PROPERTIES OUTPUT_NAME_RELEASE "qmltester")
 
 # Must After add_executable
 target_link_libraries( ${project_name}
