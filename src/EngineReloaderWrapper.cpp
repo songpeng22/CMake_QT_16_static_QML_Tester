@@ -58,17 +58,37 @@ void EngineReloaderWrapper::afterLoad()
 
     QObject *rootObject = qobject_cast<QObject*>(m_instance->rootObjects().first());
 
+#if 1
+    QVariant returnedValue;
+	QVariant objectName = "objComboCountry";
+	QVariant name = "visible";
+	QVariant value = false;
+    QMetaObject::invokeMethod(rootObject, "setProperty",
+			Qt::DirectConnection,
+            Q_RETURN_ARG(QVariant, returnedValue),
+            Q_ARG(QVariant, objectName),
+			Q_ARG(QVariant, name),
+			Q_ARG(QVariant, value));
+	qDebug() << "QML function returned:" << returnedValue;
+#else
     QVariant returnedValue;
     QVariant file = "Hello from C++";
     QMetaObject::invokeMethod(rootObject, "initQmlLoader",
             Q_RETURN_ARG(QVariant, returnedValue),
             Q_ARG(QVariant, file));
-
+#endif
+    
+#if 1
+    //正确的使用方法
+    CQmlObjs::Instance()->SetRootObject(rootObject);
+    CQmlObjs::Instance()->setProperty("objComboLoad","visible",false);
+#else
     //错误的使用方法,not expose qml to c++
     //CQmlObjs::Instance()->SetRootObject(rootObject);
     //qDebug() << CQmlObjs::Instance()->GetObj("objButton1")->property("text").toString();
     //CQmlObjs::Instance()->GetObj("objButton1")->setProperty("text", "Next");
     //qDebug() << CQmlObjs::Instance()->GetObj("objButton1")->property("text").toString();
+#endif
 }
 
 void EngineReloaderWrapper::setReloadSubQml( QString qsFile )

@@ -24,6 +24,7 @@ Window {
 
 		ComboBox {
 			id: idComboCountry
+			objectName : "objComboCountry"
 			width: parent.width
 			height : 30
 			anchors.right : parent.right
@@ -36,6 +37,7 @@ Window {
 		}
 		ComboBox {
 			id: idComboLoadCapacity
+			objectName : "objComboLoad"
 			width: parent.width
 			height : 30
 			anchors.right : parent.right
@@ -69,17 +71,19 @@ Window {
 
 
     }
-/*	
-    Rectangle{
-        id:idRect3
-        objectName : "objRect3"
-        color: "plum"
-        height: parent.height / 3
-        width : parent.width
-        anchors.top:idRect2.bottom
 
+	function setProperty( objectName,name,value )
+    {
+        console.log( "setProperty::objectName:" + objectName + ",name:" + name + ",value:" + value );
+		console.log( "idComboCountry:",idComboCountry );
+		if( objectName == "objComboCountry" && name == "visible" )
+			idComboCountry.visible = Boolean(value);
+		if( objectName == "objComboLoad" && name == "visible" )
+			idComboLoadCapacity.visible = Boolean(value);
+
+        return "some return value"
     }
-*/
+
 	Component.onCompleted:{
 //		console.log("value" , Global.value());
 	}

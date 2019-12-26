@@ -30,6 +30,24 @@ public:
     void SetRootObject(QObject *object){
         m_rootObject = object;
     }
+    void setProperty(QString objectName, QString name, QVariant value){
+        if (m_rootObject == nullptr){
+            qDebug() << "setProperty()::invalid m_rootObject";
+            return;
+        }
+        QMetaObject::invokeMethod(m_rootObject, "setProperty",
+			Qt::DirectConnection,
+            Q_RETURN_ARG(QVariant, returnedValue),
+            Q_ARG(QVariant, objectName),
+			Q_ARG(QVariant, name),
+			Q_ARG(QVariant, value));
+	    qDebug() << "setProperty returned:" << returnedValue;
+    }
+    QVariant returnedValue;
+	QVariant objectName = "objComboCountry";
+	QVariant name = "visible";
+	QVariant value = false;
+    
 protected:
     QObject * FindSubObject(QString qstr) {
         QObject * objParent = m_rootObject;
