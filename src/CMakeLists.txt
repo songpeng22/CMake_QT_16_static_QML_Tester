@@ -16,7 +16,7 @@ project(Solution)
 
 # set(<variable> <value>
 #    [[CACHE <type> <docstring> [FORCE]] | PARENT_SCOPE])
-set( project_name QmlStandard )
+set( project_name StaticQmlTester )
 message( "Project name is: " ${project_name} )
 
 # manual settings
@@ -268,10 +268,18 @@ SOURCE_GROUP("Source Files" FILES ${project_sources})
 SOURCE_GROUP("Header Files" FILES ${project_headers})
 SOURCE_GROUP("Resource Files" FILES ${project_resources})
 
+# mark as startup project
+IF(WIN32 AND MSVC)
+	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${project_name})
+ENDIF()
+
 # Tell CMake to create the project executable
 add_executable( ${project_name} WIN32 ${project_sources} ${project_headers} ${project_resources})
 
 # set_target_properties(target1 target2 ...PROPERTIES prop1 value1 prop2 value2 ...)
+# PDB Path
+#SET_TARGET_PROPERTIES( ${project_name} PROPERTIES PDB_OUTPUT_DIRECTORY_DEBUG	${CMAKE_BINARY_DIR}/../bin/ )
+#SET_TARGET_PROPERTIES( ${project_name} PROPERTIES PDB_OUTPUT_DIRECTORY_RELEASE	${CMAKE_BINARY_DIR}/../bin )
 # Output Path
 set_target_properties( ${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG	${CMAKE_BINARY_DIR}/../bin )
 set_target_properties( ${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE	${CMAKE_BINARY_DIR}/../bin )
