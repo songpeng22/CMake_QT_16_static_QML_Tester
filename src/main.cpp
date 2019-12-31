@@ -14,6 +14,8 @@
 #include <QQmlComponent>
 //For Qml loading Method 5
 #include "EngineReloaderWrapper.h"
+//For Qml loading Method 6
+#include "QuickViewReloaderWrapper.h"
 //For Debugging
 #include <QQmlDebuggingEnabler>
 //
@@ -78,6 +80,27 @@
 
 int main(int argc, char *argv[])
 {
+	QGuiApplication app(argc, argv);
+	//Settings
+	QCoreApplication::setOrganizationName("Bizerba");
+	QCoreApplication::setApplicationName("QmlLoader");
+	QCoreApplication::setOrganizationDomain("Bizerba.com");
+	//Engine
+	qDebug() << "QuickViewReloaderWrapper";
+	QuickViewReloaderWrapper view;
+	QUrl url = QUrl(QStringLiteral("qrc:/popup_demo2.qml"));
+	view.load(url);
+
+	return app.exec();
+}
+
+#elif 1
+
+int main(int argc, char *argv[])
+{
+    //
+	qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    //
     QGuiApplication app(argc, argv);
     //Settings
     QCoreApplication::setOrganizationName("Bizerba");

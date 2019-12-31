@@ -97,6 +97,7 @@ include_directories(
     Qt5::Quick
     Qt5::QuickControls2
     Qt5::QuickWidgets
+	Qt5::VirtualKeyboard
 )
 
 # set library directory
@@ -242,6 +243,8 @@ FILE(GLOB project_sources
     main.cpp
     EngineReloader.cpp
     EngineReloaderWrapper.cpp
+	QuickViewReloader.cpp
+	QuickViewReloaderWrapper.cpp
     Widget.cpp
 	QmlObjs.cpp
 )
@@ -251,16 +254,26 @@ FILE(GLOB project_headers
 )
 
 SET( project_resources 
+	# cmake
     choose_qt_sdk.cmake
     recursive_search.cmake
+	# javascript
+	utils.js
+	# qrc
     main.qrc
-	# Main
+	# qml
+	default.qml
     main.qml
     method2.qml
 	# Controls
 	button_demo.qml
 	TabBar.qml
 	busyindicator_demo.qml
+	keyboardLoader.qml
+	Keyboard.qml
+	#
+	popup_demo2.qml
+	Popup_demo2_keyboard.qml
 )
 
 #Same type together
@@ -297,6 +310,7 @@ target_link_libraries( ${project_name}
     ${Qt5Quick_LIBRARIES}
     ${Qt5QuickControls2_LIBRARIES}
     ${Qt5QuickWidgets_LIBRARIES}
+	${Qt5VirtualKeyboard_LIBRARIES}
 #[[]]
         ${QLIBS}
 
