@@ -274,6 +274,9 @@ SET( project_resources
 	#
 	popup_demo2.qml
 	Popup_demo2_keyboard.qml
+	#
+	Coordinate.qml
+
 )
 
 #Same type together
