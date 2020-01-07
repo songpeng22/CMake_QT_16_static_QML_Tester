@@ -15,8 +15,9 @@ Popup
 	property var strPutIn: "";
 	property var strReturn: "";
 	property var varStrOld: "";
+	property var bReplace : true;
 	property var buttonText : [ "BS","CE","Clear"]
-	property var buttonTextNum : ["7","8","9","4","5","6","1","2","3","","0","+/" ]
+	property var buttonTextNum : ["7","8","9","4","5","6","1","2","3",".","0","+/" ]
 	property var buttonTextOK : ["OK","Cancel"]
 	property var buttonCFunction : [
 		function_BS,
@@ -75,13 +76,14 @@ Popup
 				border.width: 2
 				border.color: "lightblue"
 				
-				Text
+				TextInput
 				{
 					id: idTextEdit
 					width: parent.width
 					focus: true
 					font.family: "Helvetica"
 					font.pointSize: 20
+					inputMethodHints :Qt.ImhFormattedNumbersOnly
 				}
 			}
 			
@@ -265,19 +267,98 @@ Popup
 	
 	function function_Add(text)
 	{
-		console.log("function_Add:",4);
+		console.log("function_Add:",text);
 		var strNumber = "";
 		var str = "";
-		strNumber = Number(idTextEdit.text.concat(text));
-		if( strNumber >= 0  ){
-			str = "+";
-			idTextEdit.text = str.concat(strNumber);
+		
+		var strTemp = String(idTextEdit.text);
+		var strAdd = String(text);
+//		console.log( "strAdd.search:",strAdd.search(/\./) );
+//		console.log( "strTemp.search:",strTemp.search(/\./) );
+		
+		var bAdd = true;
+		
+		console.log( "bReplace:",bReplace );
+		if( bReplace )
+		{
+			bReplace = false;
+			
+			if( isValidNumber(text) )
+			{
+				idTextEdit.text = text;
+			}
+			else
+			{
+				console.log("invalid: invalid input while replacing.");
+			}
+			return;
+		}
+		
+		var strSymbol = "";
+		var bDot = false;
+		var strBeforePoint = "";
+		var strAfterPoint = "";
+		
+		//split symbol
+		if(isSymbol(strTemp))
+		{
+			strSymbol = strTemp.charAt(0);
+			strTemp = strTemp.substring(1,strTemp.length - 1);
+			console.log("after cut symbol:",strSymbol);
+			console.log("after cut str left:",strSymbol);
+		}
+		
+		//split dot
+		if( bDot = isDot(strTemp))
+		{
+			var dotIndex = 0;
+			dotIndex = strTemp.search(/\./);
+			strBeforePoint = strTemp.substring(0,dotIndex);
+			strAfterPoint = strTemp.substring(dotIndex + 1,strTemp.length);
+			console.log("strBeforePoint:",strBeforePoint);
+			console.log("strAfterPoint:",strAfterPoint);
 		}
 		else
 		{
-			str = "";
-			idTextEdit.text = str.concat(strNumber);
+			strBeforePoint = strTemp;
+			console.log("strBeforePoint:",strBeforePoint);
+			console.log("strAfterPoint:",strAfterPoint);
 		}
+		
+		//number judge
+		if( strTemp.search(/\./) >= 0 && text.search(/\./) >= 0 )
+		{
+			console.log("invalid:only one '.' allowed");
+			bAdd = false;
+		}
+		else if( !bDot && Number(strBeforePoint) >= 0 && Number(strBeforePoint) <= 9 && Number(strAdd) >= 0 && Number(strAdd) <= 9 )
+		{
+			console.log("invalid:one significant digit allowed before the decimal point");
+			bAdd = false;
+		}
+		else if( Number(strAfterPoint) >= 10 && Number(strAfterPoint) < 99 )
+		{
+			console.log("invalid:two significant digit allowed after the decimal point");
+			bAdd = false;
+		}
+		else
+		{
+			bAdd = true;
+		}
+		console.log( "bAdd:",bAdd );
+		
+		if( bAdd )
+		{
+			console.log("function_Add add:",text);
+			str = idTextEdit.text.concat(text);
+		}
+		else
+		{
+			console.log("input invalid , return");
+			return;
+		}
+		
+		idTextEdit.text = str;
 	}
 	
 	function function_Positive_Negative(text)
@@ -286,20 +367,123 @@ Popup
 		var str = "";
 		var strNumber = "";
 		
-		if( idTextEdit.text >= 0 )
-		{
-			console.log("+number:",idTextEdit.text);
-			str = "-";
-		}
-		else
-		{
-			console.log("-number:",idTextEdit.text);
-			str = "+";
-		}
+		str = reverseNumber(idTextEdit.text);
 			
 		console.log("function_Positive_Negative str:",str);
 		
-		idTextEdit.text = str.concat(idTextEdit.text.substring(1,idTextEdit.text.length));
+		idTextEdit.text = str;
+	}
+	
+	function isSymbol( symbol )
+	{
+		var bSymbol = false;
+		console.log("isSymbol:",symbol);
+		if( symbol.charAt(0) == "+" || symbol.charAt(0) == "-" )
+		{
+			bSymbol = true;
+			console.log("isSymbol:",bSymbol);
+			return bSymbol;
+		}
+		else
+		{
+			bSymbol = false;
+			console.log("isSymbol:",bSymbol);
+			return bSymbol;
+		}
+	}
+	
+	function isDot( text )
+	{
+		var bDot = false;
+		console.log("isDot:",text);
+		if( text.search(/\./) >= 0 )
+		{
+			bDot = true;
+			console.log("bDot:",bDot);
+			return bDot;
+		}
+		else
+		{
+			bDot = false;
+			console.log("bDot:",bDot);
+			return bDot;
+		}
+	}
+	
+	function isValidNumber( number )
+	{
+		console.log("isValidNumber:",number);
+		return Number(number);
+	}
+	
+	function addSymbol( number )
+	{
+		console.log( "addSymbol:",number );
+		var str = "";
+		var strNumber = Number(number);
+		if( strNumber >= 0  ){
+			str = "+";
+			return str.concat(strNumber);
+		}
+		else
+		{
+			str = "";
+			return str.concat(strNumber);
+		}
+	}
+	
+	function reverseNumber( number )
+	{
+		console.log( "reverseNumber:",number );
+		var str = "";
+		var strSave = String(number);
+		var strReturn = "";
+		var strNumber = Number(number);
+		console.log( "reverseNumber::strNumber:",strNumber );
+		var strReverseValue = ( 0 - Number(number) );
+		console.log( "reverseNumber::strReverseValue:",strReverseValue );
+		if( strNumber > 0 ){
+			strReturn = addSymbol(strReverseValue);
+			return strReturn;
+		}
+		else if ( strNumber < 0 ){
+			strReturn = addSymbol(strReverseValue);
+			return strReturn;
+		}
+		else if ( strNumber == 0 )
+		{
+			strReturn = reverseSymbol( strSave );
+			return strReturn;
+		}
+		else{}
+	}
+	
+	function reverseSymbol( text )
+	{
+		console.log( "reverseSymbol:",text );
+		var str = "";
+		var strTemp = String(text);
+		var strReturn = "";
+		console.log( "reverseSymbol::substring",strTemp.substring( 0,1 ) );
+		if( strTemp.charAt(0) == "+" )
+		{
+			str = "-";
+			strReturn = str.concat( strTemp.substring( 1,strTemp.length ) );
+			console.log( "reverseSymbol return:",strReturn );
+			return strReturn;
+		}
+		else if( strTemp.charAt(0) == "-" )
+		{
+			str = "+";
+			strReturn = str.concat( strTemp.substring( 1,strTemp.length ) );
+			console.log( "reverseSymbol return:",strReturn );
+			return strReturn;
+		}
+		else 
+		{
+			console.log( "reverseSymbol:there is no symbol to reverse" );
+			return text;
+		}
 	}
 	
 	function function_OK()

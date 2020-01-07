@@ -16,7 +16,7 @@ Rectangle {
 	{
 		id: idTextField
 		y: 10
-		text: "0"
+		text: "00.00"
 		MouseArea {
 			anchors.fill: parent
 			onClicked: { 
