@@ -83,6 +83,7 @@ Popup
 					focus: true
 					font.family: "Helvetica"
 					font.pointSize: 20
+//					inputMask: "9.99"
 					inputMethodHints :Qt.ImhFormattedNumbersOnly
 				}
 			}
