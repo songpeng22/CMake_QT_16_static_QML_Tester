@@ -114,7 +114,7 @@ Popup
 								radius: 5
 								opacity: enabled ? 1 : 0.3
 								color:"#212121"
-		//						border.color: idButtonWESStart.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
+		//						border.color: parent.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
 								border.width: 1
 							}
 							
@@ -173,7 +173,7 @@ Popup
 									radius: 5
 									opacity: enabled ? 1 : 0.3
 									color:"#212121"
-			//						border.color: idButtonWESStart.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
+			//						border.color: parent.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
 									border.width: 1
 								}
 								
@@ -225,7 +225,7 @@ Popup
 								radius: 5
 								opacity: enabled ? 1 : 0.3
 								color:"#212121"
-		//						border.color: idButtonWESStart.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
+		//						border.color: parent.down ? Config.btnColorBorderDown : Config.btnColorBorderNormal
 								border.width: 1
 							}
 							

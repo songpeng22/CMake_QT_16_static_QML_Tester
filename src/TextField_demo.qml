@@ -31,23 +31,28 @@ Rectangle
 		background: Rectangle {
 			implicitWidth: 100
 			implicitHeight: 40
-			border.color: "#333"
-			border.width: 1
+			
+			//border.color: "#333"
+			border.width: 2		
+			border.color: parent.readOnly ? "#D4D4D4" : "lightblue" 
+			color: parent.readOnly ? "#F0F0F0" : "white"
 		}
 	}
 	
 	Button
 	{
 		id:button
-		text: "test"
+		text: "show and reverse"
 		anchors.left: idTextField.right
-		implicitWidth: 100
+		implicitWidth: 200
 		implicitHeight: 40		
 		onClicked:
 		{
 			console.log("TextField::displayText:",idTextField.displayText);
 			console.log("TextField::text:",idTextField.text);
 			console.log("TextField::cursorPosition:",idTextField.cursorPosition );
+			
+			idTextField.readOnly = !idTextField.readOnly;
 		}
 	}
 }
