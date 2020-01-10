@@ -12,4 +12,13 @@ Rectangle
 	height: 400
 	color: "teal"
 	
+	Label_Standard
+	{
+		id : idTextScaleType
+		objectName : "objTextScaleType"
+		text: "Scale Type:"
+		anchors.top: parent.top
+		anchors.left : parent.left
+
+	}
 }

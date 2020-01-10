@@ -16,6 +16,9 @@ Rectangle
 	CheckBox
 	{
 		id: idCheckBox
+		checked: true
+		enabled: false
+		
 		onClicked:
 		{
 			console.log("onClicked::checked:",idCheckBox.checked);

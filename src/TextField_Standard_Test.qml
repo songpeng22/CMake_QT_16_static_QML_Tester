@@ -12,4 +12,8 @@ Rectangle
 	height: 400
 	color: "teal"
 	
+	TextField_Standard
+	{
+		readOnly: true
+	}
 }

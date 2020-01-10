@@ -5,11 +5,13 @@ import QtQuick.Controls 2.3
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls.Material 2.0
 
-Rectangle
-{
-	id: idItemKeyBoard
-	width: 600
-	height: 400
-	color: "teal"
-	
+Label {
+	font.family: "Helvetica"
+	font.pointSize: 11
+	color: "black"
+	background: Rectangle {
+		implicitWidth: 300
+		implicitHeight: 40
+		color: "white"
+	}
 }

@@ -4,6 +4,7 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls.Material 2.0
+import QtQuick.Dialogs 1.1
 
 Rectangle
 {
@@ -12,4 +13,11 @@ Rectangle
 	height: 400
 	color: "teal"
 	
+	Button {
+		text: qsTr("Save")
+
+		ToolTip.visible: pressed//hovered//down
+		ToolTip.delay: Qt.styleHints.mousePressAndHoldInterval
+		ToolTip.text: qsTr("Save the active project")
+	}
 }
