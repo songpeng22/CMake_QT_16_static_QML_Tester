@@ -19,4 +19,35 @@ Flickable {
             GradientStop { position: 1.0; color: "blue" }
         }
     }
+	
+	onFlickStarted:{
+		console.log("onFlickStarted");
+		
+		
+		
+	}
+	
+	onFlickEnded:{
+		console.log("onFlickEnded");
+	}
+	
+	onMovementStarted:{
+		console.log("onMovementStarted");
+		
+		//(widthRatio,heightRatio) is provided in ratio -> (0.5,0.5)
+		//(xPosition,yPosition) is provided in ratio(0~0.5,0~0.5)
+		console.log("Flickable::visibleArea.xPosition:",visibleArea.xPosition);
+		console.log("Flickable::visibleArea.yPosition:",visibleArea.yPosition);
+		console.log("Flickable::visibleArea.widthRatio:",visibleArea.widthRatio);
+		console.log("Flickable::visibleArea.heightRatio:",visibleArea.heightRatio);
+	}
+	
+	onMovementEnded:{
+		console.log("onMovementEnded");
+		
+		console.log("Flickable::visibleArea.xPosition:",visibleArea.xPosition);
+		console.log("Flickable::visibleArea.yPosition:",visibleArea.yPosition);
+		console.log("Flickable::visibleArea.widthRatio:",visibleArea.widthRatio);
+		console.log("Flickable::visibleArea.heightRatio:",visibleArea.heightRatio);
+	}
 }
