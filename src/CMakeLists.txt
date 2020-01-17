@@ -253,7 +253,7 @@ FILE(GLOB project_headers
     *.h
 )
 
-SET( project_resources 
+FILE(GLOB project_resources 
 	# cmake
     choose_qt_sdk.cmake
     recursive_search.cmake
@@ -261,6 +261,9 @@ SET( project_resources
 	utils.js
 	# qrc
     main.qrc
+
+	*.qml
+#[[
 	# qml
 	default.qml
     main.qml
@@ -276,7 +279,7 @@ SET( project_resources
 	Popup_demo2_keyboard.qml
 	#
 	Coordinate.qml
-
+]]
 )
 
 #Same type together

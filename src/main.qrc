@@ -1,12 +1,17 @@
 <RCC>
     <qresource prefix="/">
-		<file>GridView_demo.qml</file>
         <file>main.qml</file>
-        <file>method2.qml</file>
 		<file>button_demo.qml</file>
-		<file>TabBar.qml</file>
+		<file>Config.qml</file>
+		<file>GridView_demo.qml</file>
+		<file>method2.qml</file>
 		<file>popup_demo1.qml</file>
 		<file>popup_demo2.qml</file>
 		<file>Popup_demo2_keyboard.qml</file>
+		<file>Rectangle_Standard.qml</file>
+		<file>TabBar.qml</file>
+		<file>Text_Standard.qml</file>
+		<file>Variable_Get.qml</file>
+		<file>Variable_Get_Test.qml</file>
     </qresource>
 </RCC>

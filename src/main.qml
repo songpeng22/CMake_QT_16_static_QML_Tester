@@ -15,7 +15,8 @@ Window {
     title: qsTr("Hello World")
 
 	//Rectangle for TabBar
-    Rectangle{
+    Rectangle
+	{
         id:idRect1
         objectName : "objRect1"
         color: "teal"
@@ -48,26 +49,16 @@ Window {
         
     }
 
-    Rectangle{
+    Rectangle_Standard
+	{
         id:idRect2
         objectName : "objRect2"
-        color: "teal"
+        color: "blue"
         height: parent.height / 2
         width : parent.width
 		anchors.top:idRect1.bottom
 
-        
-		ListView {
-			width: 100; 
-			height: 100
 
-			model: myModel
-			delegate: Rectangle {
-				height: 25
-				width: 100
-				Text { text: myModel }
-			}
-		}
 
 
     }

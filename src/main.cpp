@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
-	QUrl url = QUrl(QStringLiteral("qrc:/popup_demo2.qml"));
+	QUrl url = QUrl(QStringLiteral("qrc:/Variable_Get_Test.qml"));
 	view.load(url);
 
 	return app.exec();
