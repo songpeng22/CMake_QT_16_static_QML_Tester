@@ -6,8 +6,14 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls.Material 2.0
 
 Label {
+	Config
+	{
+		id: config
+	}
+	
+	height: config.varLineHeight
 	font.family: "Helvetica"
-	font.pointSize: 11
+	font.pointSize: config.varFontSize
 	color: "black"
 	background: Rectangle {
 		implicitWidth: 300

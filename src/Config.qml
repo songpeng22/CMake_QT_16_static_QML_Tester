@@ -3,6 +3,10 @@ import QtQuick 2.9
 QtObject {
     //Platform
     property bool isMoblie: Qt.platform.os==="android" || Qt.platform.os==="ios"
+	//Geometry 
+	property var varLineHeight: 20
+	//Font
+	property var varFontSize: 10
 	//Color
 	property var colors : [btnColorDown, btnColorNormal, btnColorDisable,btnColorBorderDown,btnColorBorderNormal,btnColorTextDown,btnColorTextNormal,btnColorTextDisable,textColorReadOnly,textColorNormal,textColorBorderReadOnly,textColorBorderNormal ];
 	property var colorsText : ["btnColorDown", "btnColorNormal", "btnColorDisable","btnColorBorderDown","btnColorBorderNormal","btnColorTextDown","btnColorTextNormal","btnColorTextDisable","textColorReadOnly","textColorNormal","textColorBorderReadOnly","textColorBorderNormal" ];	

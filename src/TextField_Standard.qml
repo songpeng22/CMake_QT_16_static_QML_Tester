@@ -13,7 +13,7 @@ TextField {
 	
 	background: Rectangle {
 		implicitWidth: 200
-		implicitHeight: 40
+		implicitHeight: config.varLineHeight
 		//color: parent.readOnly ? "transparent" : "#353637"
 		color: parent.readOnly ? config.textColorReadOnly : config.textColorNormal
 		//border.color: "#e0e0e0"
