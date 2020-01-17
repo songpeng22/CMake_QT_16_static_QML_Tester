@@ -9,6 +9,8 @@ build*/
 *.d
 # qml
 *.qmlc
+# rcc
+*.rcc
 
 # Compiled Object files
 *.slo

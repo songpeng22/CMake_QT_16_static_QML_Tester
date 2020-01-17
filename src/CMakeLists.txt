@@ -287,6 +287,11 @@ SOURCE_GROUP("Source Files" FILES ${project_sources})
 SOURCE_GROUP("Header Files" FILES ${project_headers})
 SOURCE_GROUP("Resource Files" FILES ${project_resources})
 
+MESSAGE(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
+execute_process(COMMAND python3 rcc_build.py
+                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/../skins/ RESULT_VARIABLE rv)
+MESSAGE("rv='${rv}'")
+
 # mark as startup project
 IF(WIN32 AND MSVC)
 	set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${project_name})
