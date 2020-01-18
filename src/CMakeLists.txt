@@ -13,15 +13,17 @@ endif( NOT DEFINED CMAKE_PREFIX_PATH )
 set(CMAKE_BUILD_TYPE Debug)
 
 # Python script
-MESSAGE(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
-execute_process(COMMAND python3 rcc_build.py
-                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/../skins/ RESULT_VARIABLE rv)
-MESSAGE("rcc_build.py return value='${rv}'")
-
+#[[
 MESSAGE(STATUS "This is src dir " ${Solution_SOURCE_DIR}/)
 execute_process(COMMAND python3 qrc_build.py
                 WORKING_DIRECTORY ${Solution_SOURCE_DIR}/ RESULT_VARIABLE rv)
 MESSAGE("qrc_build.py return value='${rv}'")
+]]
+
+MESSAGE(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
+execute_process(COMMAND python3 rcc_build.py
+                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/../skins/ RESULT_VARIABLE rv)
+MESSAGE("rcc_build.py return value='${rv}'")
 
 # Solution Start
 project(Solution)
