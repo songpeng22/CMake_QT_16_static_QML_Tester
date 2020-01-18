@@ -3,6 +3,7 @@
 
 #include "QuickViewReloader.h"
 #include "Resource.h"
+#include "Settings.h"
 
 class QuickViewReloaderWrapper : public QuickViewReloader
 {
@@ -11,6 +12,7 @@ public:
     ~QuickViewReloaderWrapper();
 private:
     virtual bool initSkin();
+    virtual QString readConf();
     virtual void beforeLoad();
     virtual void afterLoad();
     virtual void setContextProperies( QQmlContext * pQmlContext );
@@ -18,6 +20,7 @@ private:
     void Clear();
 protected:
     Resource *m_res;
+    Settings *m_settings;
 };
 
 

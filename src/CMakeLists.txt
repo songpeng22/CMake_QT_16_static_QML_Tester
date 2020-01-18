@@ -1,4 +1,4 @@
-# CMake Settings
+# CMake Settings1
 cmake_minimum_required(VERSION 3.1.0)
 # CMake Include
 include("recursive_search.cmake")
@@ -336,4 +336,3 @@ target_link_libraries( ${project_name}
 
 #Message Test
 MESSAGE(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
-

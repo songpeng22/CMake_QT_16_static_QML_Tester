@@ -87,6 +87,8 @@ public:
         QString m_skinUrl = "";
         QString m_rccFileName = "";
         QString m_skinSource = "";
+
+		m_bIniSet = false;
     }
     ~Resource()
     {
@@ -96,7 +98,30 @@ public:
             settingsInner = nullptr;
         }
     }
-public:
+public slots:
+	/*
+	* get skinUrl from ini file
+	* load and reload rcc file
+	*/
+	void reloadSkin()
+	{
+		retrieveSkinUrl();
+		if (!isLoaded()) {
+			qDebug() << "load skinRccFileName direct from: " << getRccFileName();
+			loadSkin(getRccFileName());
+		}
+		else {
+			qDebug() << "change skin to skinRccFileName: " << getRccFileName();
+			changeSkin(getRccFileName());
+		}
+	}
+	//is skin loaded already
+	bool isLoaded() {
+		if (m_skinSource.isEmpty()) return false;
+		else
+			return true;
+	}
+
     //set file directory ( "c:\" )
     void setIniDirPath( QString iniDirPath ){
         qDebug() << "+setIniFileDirectory::iniDirPath:" << iniDirPath;
@@ -104,6 +129,7 @@ public:
             iniDirPath.append("/");
 
         m_iniDirPath = iniDirPath;
+		m_iniFilePath = ""; //set m_iniDirPath mean that we will reset m_iniFilePath later
         qDebug() << "-setIniDirPath::m_iniDirPath:" << m_iniDirPath;
     }
     //set file nameh ( "a.ini" )
@@ -113,6 +139,7 @@ public:
             return;
 
         m_iniFileName = iniFileName;
+		m_iniFilePath = ""; //set m_iniFileName mean that we will reset m_iniFilePath later
         qDebug() << "-setIniFileName::m_iniFileName:" << m_iniFileName;
     }
     //set file path ( "c:\a.ini" )
@@ -124,22 +151,9 @@ public:
         m_iniFilePath = iniFilePath;
         qDebug() << "-setIniFilePath::m_iniFilePath:" << m_iniFilePath;
     }
-    /*
-     * get skinUrl from ini file
-     * load and reload rcc file
-     */
-    void reloadSkin()
-    {
-        retrieveSkinUrl();
-        if( !isLoaded() ){
-            qDebug() << "load skinRccFileName direct from: " << getRccFileName();
-            loadSkin( getRccFileName() );
-        }
-        else{
-            qDebug() << "change skin to skinRccFileName: " << getRccFileName();
-            changeSkin( getRccFileName() );
-        }
-    }
+	//is ini file already set
+	bool isIniFileAlreadySet() { return m_bIniSet; }
+	void setIniReady(bool bReady) { m_bIniSet = bReady; }
 private:
     //retrieve skinUrl from ini file 
     void retrieveSkinUrl(){
@@ -185,12 +199,6 @@ private:
         m_skinSource = skin;
     }
 
-    bool isLoaded(){
-        if( m_skinSource.isEmpty() ) return false;
-        else 
-            return true;
-    }
-
     void changeSkin(QString newSkin){
         if( m_skinSource.isEmpty() ) return;
         if( newSkin.isEmpty() ) return;
@@ -207,7 +215,8 @@ private:
         QResource::registerResource( newSkin );
         m_skinSource = newSkin;
     }
-
+private:
+	bool	m_bIniSet;
 private:
     QString m_iniDirPath;
     QString m_iniFileName;

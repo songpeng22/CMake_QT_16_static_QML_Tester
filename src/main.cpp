@@ -76,7 +76,7 @@
 
 #endif
 
-#if 1
+#if 0
 
 int main(int argc, char *argv[])
 {
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     //
-	qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+//	qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
     //
     QGuiApplication app(argc, argv);
     //Settings

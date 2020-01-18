@@ -23,6 +23,7 @@ public:
     void load(QUrl &source);
 private:
     virtual bool initSkin(){ return false; }
+    virtual QString readConf() { return ""; }
     virtual void beforeLoad();
     virtual void afterLoad();
 public slots:

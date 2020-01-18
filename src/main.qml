@@ -75,6 +75,8 @@ Window {
 		{
 			anchors.fill: parent
 			text:"Exit"
+			highlighted: true
+			Material.background: Material.Teal
 		}
 
 
