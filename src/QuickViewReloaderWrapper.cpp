@@ -21,7 +21,7 @@ QuickViewReloaderWrapper::~QuickViewReloaderWrapper()
 bool QuickViewReloaderWrapper::initSkin()
 {
     m_res  = new Resource();
-    m_res->setIniFileDirectory(QCoreApplication::applicationDirPath());
+    m_res->setIniDirPath(QCoreApplication::applicationDirPath());
     m_res->setIniFileName("qmltester.ini");
     m_res->reloadSkin();
 
