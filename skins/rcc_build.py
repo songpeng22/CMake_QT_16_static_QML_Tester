@@ -1,4 +1,4 @@
-#rcc.py
+#rcc_build.py
 import os
 
 source_path = "skin"

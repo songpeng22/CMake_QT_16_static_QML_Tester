@@ -1,5 +1,20 @@
 <RCC>
-    <qresource prefix="/">
+	<qresource prefix="/">
 	<file>qtquickcontrols2.conf</file>
-    </qresource>
+	<file>Button_Standard.qml</file>
+	<file>Button_Standard_Test.qml</file>
+	<file>CheckBox_Standard.qml</file>
+	<file>CheckBox_Standard_Test.qml</file>
+	<file>Config.qml</file>
+	<file>Label_Standard.qml</file>
+	<file>Label_Standard_Test.qml</file>
+	<file>Rectangle_Standard.qml</file>
+	<file>Rectangle_Standard_Test.qml</file>
+	<file>TextEdit_Standard.qml</file>
+	<file>TextEdit_Standard_Test.qml</file>
+	<file>TextField_Standard.qml</file>
+	<file>TextField_Standard_Test.qml</file>
+	<file>Text_Standard.qml</file>
+	<file>Text_Standard_Test.qml</file>
+	</qresource>
 </RCC>

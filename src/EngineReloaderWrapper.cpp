@@ -55,11 +55,11 @@ bool EngineReloaderWrapper::initSkin()
 	qDebug() << "app iniFileName:" << iniFileName;
 	//reload skin with ini settings
 	if (m_res->isIniFileAlreadySet()){
-		qDebug() << "ini Ready , ignore local set";
+		qDebug() << "ini string Ready , ignore local set";
 		m_res->setIniReady(false);
 	}
 	else {
-		qDebug() << "ini not Ready , set one";
+		qDebug() << "ini string not Ready , set one";
 		m_res->setIniDirPath(QCoreApplication::applicationDirPath());
 		m_res->setIniFileName(iniFileName/*"posscale.ini"*/);
 	}
