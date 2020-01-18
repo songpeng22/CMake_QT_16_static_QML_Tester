@@ -20,13 +20,25 @@ QuickViewReloaderWrapper::~QuickViewReloaderWrapper()
 
 bool QuickViewReloaderWrapper::initSkin()
 {
-    m_res  = new Resource();
-    m_res->setIniDirPath(QCoreApplication::applicationDirPath());
-    m_res->setIniFileName("qmltester.ini");
-    m_res->reloadSkin();
+	m_res = new Resource();
+	//format ini file name
+#if 1
+	QString filePath = QCoreApplication::applicationFilePath();
+	QString fileName = filePath.mid(filePath.lastIndexOf("/") + 1);
+#else
+	QStringList cmdline_args = QCoreApplication::arguments();
+	QString fileName = cmdline_args.at(0).toUtf8();
+#endif
+	qDebug() << "app fileName:" << fileName;
+	QString iniFileName = fileName.left(fileName.indexOf(".") + 1) + "ini";
+	qDebug() << "app iniFileName:" << iniFileName;
+	//reload skin with ini settings
+	m_res->setIniDirPath(QCoreApplication::applicationDirPath());
+	m_res->setIniFileName(iniFileName/*"posscale.ini"*/);
+	m_res->reloadSkin();
 
-    qDebug() << "initSkin:yes;setStyle:no";
-    return true;
+	qDebug() << "initSkin:yes;setStyle:no";
+	return true;
 }
 
 void QuickViewReloaderWrapper::beforeLoad()
