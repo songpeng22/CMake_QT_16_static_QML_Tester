@@ -76,7 +76,7 @@
 
 #endif
 
-#if 0
+#if 1
 
 int main(int argc, char *argv[])
 {
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
-	QUrl url = QUrl(QStringLiteral("qrc:/main.qml"));
+	QUrl url = QUrl(QStringLiteral("qrc:/Pane_demo.qml"));
 	view.load(url);
 
 	return app.exec();
