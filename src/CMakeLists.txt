@@ -247,6 +247,7 @@ FILE(GLOB project_sources
 	QuickViewReloaderWrapper.cpp
     Widget.cpp
 	QmlObjs.cpp
+	Resource.cpp
 )
 
 FILE(GLOB project_headers

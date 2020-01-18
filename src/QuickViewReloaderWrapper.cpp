@@ -2,16 +2,31 @@
 //API
 #include <QQmlContext>
 #include <QGuiApplication>
+#include <QCoreApplication >
 #include <QDir>
 
 QuickViewReloaderWrapper::QuickViewReloaderWrapper()
 {
-
+    m_res = nullptr;
 }
 
 QuickViewReloaderWrapper::~QuickViewReloaderWrapper()
 {
+    if( m_res ){
+        delete m_res;
+        m_res = nullptr;
+    }
+}
 
+bool QuickViewReloaderWrapper::initSkin()
+{
+    m_res  = new Resource();
+    m_res->setIniFileDirectory(QCoreApplication::applicationDirPath());
+    m_res->setIniFileName("qmltester.ini");
+    m_res->reloadSkin();
+
+    qDebug() << "initSkin:yes;setStyle:no";
+    return true;
 }
 
 void QuickViewReloaderWrapper::beforeLoad()
@@ -35,6 +50,8 @@ void QuickViewReloaderWrapper::setContextProperies(QQmlContext * pQmlContext)
     pQmlContext->setContextProperty("QDircurrentpath", QDir::currentPath());
     pQmlContext->setContextProperty("QDirRootPath", QDir::rootPath());
     pQmlContext->setContextProperty("QDirHomePath", QDir::homePath());
+    //loadSkin
+    pQmlContext->setContextProperty("Resource", m_res);
     //
     qDebug() << "-QuickViewReloaderWrapper::setContextProperies()";
 }

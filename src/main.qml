@@ -54,9 +54,28 @@ Window {
         id:idRect2
         objectName : "objRect2"
         color: "blue"
-        height: parent.height / 2
+        height: parent.height * ( 1 / 2 - 1 / 10 )
         width : parent.width
 		anchors.top:idRect1.bottom
+
+
+
+
+    }
+	Rectangle_Standard
+	{
+        id:idRect3
+        objectName : "objRect3"
+		anchors.top:idRect2.bottom
+		height: parent.height / 10
+        width : parent.width
+        color: "white"
+        
+		Button
+		{
+			anchors.fill: parent
+			text:"Exit"
+		}
 
 
 

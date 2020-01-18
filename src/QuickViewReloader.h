@@ -22,6 +22,7 @@ public:
 
     void load(QUrl &source);
 private:
+    virtual bool initSkin(){ return false; }
     virtual void beforeLoad();
     virtual void afterLoad();
 public slots:

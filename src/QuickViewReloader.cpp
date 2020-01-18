@@ -29,7 +29,10 @@ void QuickViewReloader::reload()
 
     qmlClearTypeRegistrations();
 
-    QQuickStyle::setStyle(m_style);
+    if (!initSkin()){
+        QQuickStyle::setStyle(m_style);
+        qDebug() << "initSkin:no;setStyle:yes";
+    }
 
     m_view = new QQuickView;
     m_qmlContext = m_view->rootContext();
