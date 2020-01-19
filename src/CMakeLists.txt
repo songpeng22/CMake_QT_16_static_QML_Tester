@@ -21,16 +21,16 @@ endif( NOT DEFINED CMAKE_PREFIX_PATH )
 # Python script
 message( "---------------------------Python part----------------------------------" )
 #[[
-MESSAGE(STATUS "This is src dir " ${Solution_SOURCE_DIR}/)
+message(STATUS "This is src dir " ${Solution_SOURCE_DIR}/)
 execute_process(COMMAND python3 qrc_build.py
                 WORKING_DIRECTORY ${Solution_SOURCE_DIR}/ RESULT_VARIABLE rv)
-MESSAGE("qrc_build.py return value='${rv}'")
+message("qrc_build.py return value='${rv}'")
 ]]
 
-MESSAGE(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
+message(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
 execute_process(COMMAND python3 rcc_build.py
                 WORKING_DIRECTORY ${Solution_SOURCE_DIR}/../skins/ RESULT_VARIABLE rv)
-MESSAGE("rcc_build.py return value='${rv}'")
+message("rcc_build.py return value='${rv}'")
 
 # Solution Start
 message( "---------------------------Solution part----------------------------------" )
@@ -304,6 +304,6 @@ target_link_libraries( ${project_name}
 
 )
 
-#Message Test
-MESSAGE(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
+# Message Test
+message(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
 message( "***************************CMake End**********************************" )
