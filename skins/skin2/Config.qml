@@ -1,4 +1,6 @@
 import QtQuick 2.9
+import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
 
 QtObject {
     //Platform
@@ -7,7 +9,7 @@ QtObject {
 	property var varLineHeight: 20
 	//Font
 	property var varFontSize: 10
-	//Color
+	//--------------------Color:Config--------------------
 	property var colors : [btnColorDown, btnColorNormal, btnColorDisable,btnColorBorderDown,btnColorBorderNormal,btnColorTextDown,btnColorTextNormal,btnColorTextDisable,textColorReadOnly,textColorNormal,textColorBorderReadOnly,textColorBorderNormal ];
 	property var colorsText : ["btnColorDown", "btnColorNormal", "btnColorDisable","btnColorBorderDown","btnColorBorderNormal","btnColorTextDown","btnColorTextNormal","btnColorTextDisable","textColorReadOnly","textColorNormal","textColorBorderReadOnly","textColorBorderNormal" ];	
 	//Color:Button
@@ -24,7 +26,10 @@ QtObject {
 	property color textColorNormal : "white"
 	property color textColorBorderReadOnly : "#D4D4D4"
 	property color textColorBorderNormal : "lightblue"
+	//--------------------Color:Material--------------------
+	property color theme: Material.Dark
+	property color background: Material.color(Material.BlueGrey)
 	
-    
+	
 }
 

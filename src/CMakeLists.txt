@@ -1,5 +1,5 @@
 message( "***************************CMake Start**********************************" )
-# CMake Settings12
+# CMake Settings1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890
 cmake_minimum_required(VERSION 3.1.0)
 # CMake Global Settings
 message( "---------------------------Global Settings----------------------------------" )
@@ -7,6 +7,7 @@ set(CMAKE_BUILD_TYPE Debug)         # CMAKE_BUILD_TYPE
 set(QT_STATIC 1)                    # QT_STATIC
 message("CMAKE_BUILD_TYPE:" ${CMAKE_BUILD_TYPE})
 message( "QT_STATIC is: " ${QT_STATIC} )
+set (CMAKE_SKIP_RULE_DEPENDENCY TRUE)
 # CMake Include
 include("recursive_search.cmake")
 include("choose_qt_sdk.cmake")
@@ -304,6 +305,13 @@ target_link_libraries( ${project_name}
 
 )
 
+#prebuild event
+#[[
+add_custom_command(TARGET ${project_name}
+                   POST_BUILD
+				   COMMAND cmake_rebuild.bat ARGS ""
+                   COMMENT "running cmake_rebuild.bat")
+]]
 # Message Test
 message(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
 message( "***************************CMake End**********************************" )

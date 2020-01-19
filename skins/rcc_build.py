@@ -15,7 +15,7 @@ print("mkdir ret:",ret)
 
 # if 1
 
-for index in range(1,3):
+for index in range(1,3):  #(1,3) means cycle 2
     print("index:",index)    
     folder_name = source_path + str(index)
     # qrc part
