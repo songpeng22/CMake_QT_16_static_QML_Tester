@@ -1,18 +1,25 @@
-# CMake Settings1
+message( "***************************CMake Start**********************************" )
+# CMake Settings12
 cmake_minimum_required(VERSION 3.1.0)
+# CMake Global Settings
+message( "---------------------------Global Settings----------------------------------" )
+set(CMAKE_BUILD_TYPE Debug)         # CMAKE_BUILD_TYPE
+set(QT_STATIC 1)                    # QT_STATIC
+message("CMAKE_BUILD_TYPE:" ${CMAKE_BUILD_TYPE})
+message( "QT_STATIC is: " ${QT_STATIC} )
 # CMake Include
 include("recursive_search.cmake")
 include("choose_qt_sdk.cmake")
+include("force_mtd.cmake")
 # CMake Find Package Path
 if( NOT DEFINED CMAKE_PREFIX_PATH )
     CHOOSE_QT_SDK( QT_MSVC2013_32_STATIC )
 else()
     message( "CMAKE_PREFIX_PATH from env: " ${CMAKE_PREFIX_PATH} )
 endif( NOT DEFINED CMAKE_PREFIX_PATH )
-# CMake Debug
-set(CMAKE_BUILD_TYPE Debug)
 
 # Python script
+message( "---------------------------Python part----------------------------------" )
 #[[
 MESSAGE(STATUS "This is src dir " ${Solution_SOURCE_DIR}/)
 execute_process(COMMAND python3 qrc_build.py
@@ -26,6 +33,7 @@ execute_process(COMMAND python3 rcc_build.py
 MESSAGE("rcc_build.py return value='${rv}'")
 
 # Solution Start
+message( "---------------------------Solution part----------------------------------" )
 project(Solution)
 
 # set(<variable> <value>
@@ -33,68 +41,19 @@ project(Solution)
 set( project_name StaticQmlTester )
 message( "Project name is: " ${project_name} )
 
-# manual settings
-set(QT_STATIC 1)
-message( "QT_STATIC is: " ${QT_STATIC} )
-
-MACRO(configureMsvcRuntime)
-MESSAGE(STATUS "configureMsvcRuntime() called. ")
-    IF(WIN32)
-        # Default to statically-linked runtime.
-        IF("${MSVC_RUNTIME}" STREQUAL "")
-            SET(MSVC_RUNTIME "static")
-        ENDIF()
-
-        # Set compiler options.
-        SET(variables
-            CMAKE_C_FLAGS_DEBUG
-            CMAKE_C_FLAGS_MINSIZEREL
-            CMAKE_C_FLAGS_RELEASE
-            CMAKE_C_FLAGS_RELWITHDEBINFO
-            CMAKE_CXX_FLAGS_DEBUG
-            CMAKE_CXX_FLAGS_MINSIZEREL
-            CMAKE_CXX_FLAGS_RELEASE
-            CMAKE_CXX_FLAGS_RELWITHDEBINFO
-        )
-        IF(${MSVC_RUNTIME} STREQUAL "static")
-            MESSAGE("MSVC -> forcing use of statically-linked runtime.")
-            FOREACH(variable ${variables})
-                IF(${variable} MATCHES "/MD")
-                    STRING(REGEX REPLACE "/MD" "/MT" ${variable} "${${variable}}")
-                ENDIF()
-                IF(${variable} MATCHES "/MDd")
-                    STRING(REGEX REPLACE "/MDd" "/MTd" ${variable} "${${variable}}")
-                ENDIF()
-            ENDFOREACH()
-        ELSE()
-            MESSAGE("MSVC -> forcing use of dynamically-linked runtime.")
-            FOREACH(variable ${variables})
-                IF(${variable} MATCHES "/MT")
-                    STRING(REGEX REPLACE "/MT" "/MD" ${variable} "${${variable}}")
-                ENDIF()
-            ENDFOREACH()
-            FOREACH(variable ${variables})
-                IF(${variable} MATCHES "/MTd")
-                    STRING(REGEX REPLACE "/MTd" "/MDd" ${variable} "${${variable}}")
-                ENDIF()
-            ENDFOREACH()
-        ENDIF()
-    ENDIF()
-ENDMACRO()
+message( "---------------------------runtime defines----------------------------------" )
 # force to use mtd
+configureMsvcRuntime()
 IF(QT_STATIC)
-    configureMsvcRuntime()
-add_definitions(-DQT_STATICPLUGIN)
+	add_definitions(-DQT_STATICPLUGIN)
 ENDIF(QT_STATIC)
 
-# Find includes in corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# Instruct CMake to run moc automatically when needed
-set(CMAKE_AUTOMOC ON)
-# Create code from a list of Qt designer ui files
-set(CMAKE_AUTOUIC ON)
-#handle rcc automatically( handle qrc file )
-set(CMAKE_AUTORCC ON)
+# CMake Qt
+message( "---------------------------Qt part----------------------------------" )
+set(CMAKE_INCLUDE_CURRENT_DIR ON)   # Find includes in corresponding build directories
+set(CMAKE_AUTOMOC ON)               # CMake moc automatically when needed
+set(CMAKE_AUTOUIC ON)               # Create code from a list of Qt designer ui files
+set(CMAKE_AUTORCC ON)               # CMake rcc automatically( handle qrc file )
 
 # Find the QtWidgets library
 find_package( Qt5 REQUIRED 
@@ -122,6 +81,7 @@ set(QPLGDIR ${QSTATIC}plugins/)
 set(QQMLDIR ${QSTATIC}qml/)
 
 # add library directory
+message( "---------------------------qt static lib----------------------------------" )
 RECURSIVE_SEARCH_DIR( ${QPLGDIR}*.lib QPLGDIR_list )
 RECURSIVE_SEARCH_DIR( ${QQMLDIR}*.lib QQMLDIR_list )
 RECURSIVE_SEARCH_NAME( ${QLIBDIR}*d.lib QLIBDIR_namelist )
@@ -272,6 +232,7 @@ FILE(GLOB project_resources
 	# cmake
     choose_qt_sdk.cmake
     recursive_search.cmake
+	force_mtd.cmake
 	# javascript
 	utils.js
 	# qrc
@@ -345,3 +306,4 @@ target_link_libraries( ${project_name}
 
 #Message Test
 MESSAGE(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
+message( "***************************CMake End**********************************" )

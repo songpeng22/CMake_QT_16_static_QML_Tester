@@ -77,7 +77,7 @@ void EngineReloaderWrapper::setContextProperies(QQmlContext * pQmlContext)
     pQmlContext->setContextProperty("engine", this);
     //Engine.Global
     pQmlContext->setContextProperty("Global",GlobalVariant::Instance());
-    //loadSkin
+    //Resource loadSkin
     pQmlContext->setContextProperty("Resource", m_res);
     //Model
     qsList.append("tha");
