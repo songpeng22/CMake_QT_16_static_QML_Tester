@@ -1,5 +1,5 @@
 message( "***************************CMake Start**********************************" )
-# CMake Settings1234567890 1234567890 1234567890 123
+# CMake Settings1234567890
 cmake_minimum_required(VERSION 3.1.0)
 # CMake Global Settings
 message( "---------------------------Global Settings----------------------------------" )
@@ -12,6 +12,7 @@ set (CMAKE_SKIP_RULE_DEPENDENCY TRUE)
 include("recursive_search.cmake")
 include("choose_qt_sdk.cmake")
 include("force_mtd.cmake")
+include("force_cmake_rebuild.cmake")
 # CMake Find Package Path
 if( NOT DEFINED CMAKE_PREFIX_PATH )
     CHOOSE_QT_SDK( QT_MSVC2013_32_STATIC )
@@ -21,14 +22,8 @@ endif( NOT DEFINED CMAKE_PREFIX_PATH )
 
 # Python script
 message( "---------------------------Python part----------------------------------" )
-#[[
-message(STATUS "This is src dir " ${Solution_SOURCE_DIR}/)
-execute_process(COMMAND python3 qrc_build.py
-                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/ RESULT_VARIABLE rv)
-message("qrc_build.py return value='${rv}'")
-]]
-
-message(STATUS "This is rcc dir " ${Solution_SOURCE_DIR}/../skins/)
+# rcc_build.py for "build resource from qrc to rcc"
+message(STATUS "dir for rcc_build.py::" ${Solution_SOURCE_DIR}/../skins/)
 execute_process(COMMAND python3 rcc_build.py
                 WORKING_DIRECTORY ${Solution_SOURCE_DIR}/../skins/ RESULT_VARIABLE rv)
 message("rcc_build.py return value='${rv}'")
@@ -314,4 +309,11 @@ add_custom_command(TARGET ${project_name}
 ]]
 # Message Test
 message(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
+
+# force_cmake_rebuild.py for "force cmnake rebuild everytime"
+message(STATUS "dir for force_cmake_rebuild.py::" ${Solution_SOURCE_DIR}/)
+execute_process(COMMAND python3 force_cmake_rebuild.py
+                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/ RESULT_VARIABLE rv)
+message("force_cmake_rebuild.py return value='${rv}'")
+
 message( "***************************CMake End**********************************" )

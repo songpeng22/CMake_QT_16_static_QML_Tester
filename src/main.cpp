@@ -85,6 +85,13 @@ int main(int argc, char *argv[])
 	QCoreApplication::setOrganizationName("Bizerba");
 	QCoreApplication::setApplicationName("QmlTester");
 	QCoreApplication::setOrganizationDomain("Bizerba.com");
+    //Python
+/*
+    QStringList arguments { "force_cmake_rebuild.py" };
+    QProcess p;
+    p.start("python3 ", arguments);
+    p.waitForFinished();
+*/
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
