@@ -11,12 +11,14 @@ Label {
 		id: config
 	}
 	
+//	Material.background: config.background
+		
 	height: config.varLineHeight
 	font.family: "Helvetica"
 	font.pointSize: config.varFontSize
 	color: "black"
 	background: Rectangle {
-		implicitWidth: 300
+		implicitWidth: 100
 		implicitHeight: 40
 		color: "white"
 	}

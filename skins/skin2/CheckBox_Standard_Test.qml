@@ -10,11 +10,19 @@ Rectangle
 	id: idItemKeyBoard
 	width: 600
 	height: 400
-	color: "teal"
+	color: "white"
+	
+	Config
+	{
+		id: config
+	}
 	
 	Rectangle_Standard
 	{
-		color: "lime"
+		x: 20
+		y: 20
+		height: config.varLineHeight
+
 		Label_Standard
 		{
 			id: label
@@ -25,7 +33,7 @@ Rectangle
 		{
 //			anchors.left: label.right
 			x: label.width 
-			varText: "Check this"
+			text: "Check this"
 		}
 	}
 	

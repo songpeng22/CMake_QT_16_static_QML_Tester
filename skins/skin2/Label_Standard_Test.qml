@@ -10,7 +10,7 @@ Rectangle
 	id: idItemKeyBoard
 	width: 600
 	height: 400
-	color: "teal"
+	color: "white"
 	
 	Label_Standard
 	{

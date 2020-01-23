@@ -5,7 +5,7 @@ import QtQuick.Controls 2.3
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls.Material 2.0
 
-Item_Standard
+Item
 {
 	width: 800
 	height: 600

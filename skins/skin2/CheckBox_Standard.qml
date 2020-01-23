@@ -2,20 +2,23 @@ import QtQuick 2.9
 import QtQuick.Window 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
 
 CheckBox {
 	Config
 	{
 		id: config
 	}
-
-	property var varText: ""
 	
-	width: 20
-	height: config.varLineHeight - 2
-	indicator.width: 20
+	Material.background: config.background
+	Material.accent: config.accent
+
+	implicitWidth: config.varLineHeight - 2
+	implicitHeight: config.varLineHeight - 2
+	indicator.width: config.varLineHeight - 2
 	indicator.height: config.varLineHeight - 2
-	text: varText
+/*	
 	font.family: "Helvetica"
 	font.pointSize: config.varFontSize
+*/	
 }

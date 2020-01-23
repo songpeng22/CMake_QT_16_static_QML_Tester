@@ -10,10 +10,11 @@ Rectangle
 	id: idItemKeyBoard
 	width: 600
 	height: 400
-	color: "teal"
+	color: "black"
 	
 	TextField_Standard
 	{
 		readOnly: true
+		text:"TextField"
 	}
 }

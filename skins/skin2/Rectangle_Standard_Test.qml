@@ -12,6 +12,8 @@ Rectangle
 	height: 400
 	color: "teal"
 	
+	Material.background: config.background
+	
 	Rectangle_Standard
 	{
 		anchors.centerIn: parent

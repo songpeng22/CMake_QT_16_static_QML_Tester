@@ -11,6 +11,11 @@ TextField {
 		id: config
 	}
 	
+	Material.foreground: config.foreground
+	Material.background: config.background
+	Material.accent: config.accent
+	
+/*	
 	background: Rectangle {
 		implicitWidth: 200
 		implicitHeight: config.varLineHeight
@@ -20,4 +25,5 @@ TextField {
 		border.color: parent.readOnly ? config.textColorBorderReadOnly : config.textColorBorderNormal
 		border.width: 1
 	}
+*/	
 }

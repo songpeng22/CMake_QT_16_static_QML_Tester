@@ -9,6 +9,7 @@
 	<file>Item_Standard.qml</file>
 	<file>Label_Standard.qml</file>
 	<file>Label_Standard_Test.qml</file>
+	<file>Material_demo.qml</file>
 	<file>Pane_Standard.qml</file>
 	<file>Pane_Standard_Test.qml</file>
 	<file>Rectangle_Standard.qml</file>

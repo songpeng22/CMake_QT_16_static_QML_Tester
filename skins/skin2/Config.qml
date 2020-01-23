@@ -29,7 +29,8 @@ QtObject {
 	//--------------------Color:Material--------------------
 	property color theme: Material.Dark
 	property color background: Material.color(Material.BlueGrey)
-	
+	property color foreground: "White"//Material.color(Material.White)
+	property color accent: Material.color(Material.Blue)
 	
 }
 

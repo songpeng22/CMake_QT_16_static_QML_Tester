@@ -12,9 +12,14 @@ Button
 		id: config
 	}
 	implicitWidth: 100
-	implicitHeight: 40
+	implicitHeight: config.varLineHeight
 
 //	Material.theme: config.theme
 	Material.background: config.background
+	Material.foreground: config.foreground
+	Material.accent: Material.Green
+    
+	
+
 	
 }

@@ -5,18 +5,16 @@ import QtQuick.Controls 2.3
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls.Material 2.0
 
-
 Rectangle
 {
 	Config
 	{
 		id: config
 	}
-	property var varColor: "white"
 
-	
 	implicitWidth: 100
 	implicitHeight: config.varLineHeight
-	color: varColor
 	
+	property var varColor: "white"
+	color: varColor
 }
