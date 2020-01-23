@@ -2,13 +2,10 @@
 	<qresource prefix="/">
 	<file>qtquickcontrols2.conf</file>
 	<file>Button_Standard.qml</file>
-	<file>Button_Standard.qmlc</file>
 	<file>Button_Standard_Test.qml</file>
-	<file>Button_Standard_Test.qmlc</file>
 	<file>CheckBox_Standard.qml</file>
 	<file>CheckBox_Standard_Test.qml</file>
 	<file>Config.qml</file>
-	<file>Config.qmlc</file>
 	<file>Item_Standard.qml</file>
 	<file>Label_Standard.qml</file>
 	<file>Label_Standard_Test.qml</file>

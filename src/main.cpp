@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 	//Settings
 	QCoreApplication::setOrganizationName("Bizerba");
-	QCoreApplication::setApplicationName("QmlLoader");
+	QCoreApplication::setApplicationName("QmlTester");
 	QCoreApplication::setOrganizationDomain("Bizerba.com");
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";

@@ -20,7 +20,6 @@
 	<file>method2.qml</file>
 	<file>NumberAnimation_demo.qml</file>
 	<file>Pane_demo.qml</file>
-	<file>Pane_demo.qmlc</file>
 	<file>ParallelAnimation_demo.qml</file>
 	<file>popup_demo1.qml</file>
 	<file>Popup_demo2.qml</file>
