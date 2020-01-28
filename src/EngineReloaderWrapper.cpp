@@ -37,6 +37,12 @@ QString EngineReloaderWrapper::readConf()
 		QString theme = m_settings->value("Material/Theme").toString();
 		qDebug() << "current theme is: " << theme;
 	}
+    else if (styleName == "Universal"){
+        QString theme = m_settings->value("Universal/Theme").toString();
+		qDebug() << "current theme is: " << theme;
+    }
+    else{}
+
 	return styleName;
 }
 

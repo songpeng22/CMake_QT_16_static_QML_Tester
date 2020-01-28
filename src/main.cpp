@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
-	QUrl url = QUrl(QStringLiteral("qrc:/TextField_Standard_Test.qml"));//Button_Standard_Test//CheckBox_Standard_Test//Label_Standard_Test//Material_demo//TextField_Standard_Test
+	QUrl url = QUrl(QStringLiteral("qrc:/Universal_demo.qml"));//Universal_demo//Button_Standard_Test//CheckBox_Standard_Test//Label_Standard_Test//Material_demo//TextField_Standard_Test
 	view.load(url);
 
 	return app.exec();

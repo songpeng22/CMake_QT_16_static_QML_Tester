@@ -37,6 +37,7 @@ void EngineReloader::reload()
     if (!initSkin()) {
 		//do not implement initSkin,use default style if have one
 		QQuickStyle::setStyle(m_style);
+        QQuickStyle::setFallbackStyle(m_style/*"Material"*/);
 		qDebug() << "initSkin:no;setStyle:yes";
 	}
 	else
@@ -44,6 +45,7 @@ void EngineReloader::reload()
 		//after initSkin , read conf
 		m_style = readConf();
 		QQuickStyle::setStyle(m_style);
+        QQuickStyle::setFallbackStyle(m_style/*"Material"*/);
 	}
 
     m_instance = new QQmlApplicationEngine(this);

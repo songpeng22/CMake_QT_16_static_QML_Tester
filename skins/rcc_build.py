@@ -8,6 +8,7 @@ target_path = "bin/"
 target_name = "skin"
 exe_path = "../bin/"
 index = 0
+cycle_count = 3
 
 command = "mkdir bin"
 ret = os.system( command )
@@ -15,7 +16,7 @@ print("mkdir ret:",ret)
 
 # if 1
 
-for index in range(1,3):  #(1,3) means cycle 2
+for index in range(1,1+cycle_count):  #(1,3) means cycle 2
     print("index:",index)    
     folder_name = source_path + str(index)
     # qrc part
