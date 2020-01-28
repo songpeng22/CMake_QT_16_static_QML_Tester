@@ -28,9 +28,9 @@ QtObject {
 	property color textColorBorderNormal : "lightblue"
 	//--------------------Color:Universal--------------------
 	property var theme: Universal.Dark
-	property color background: Universal.color(Universal.Olive)
-	property color foreground: Universal.color(Universal.Brown)//"White"//Universal.color(Universal.Brown)
-	property color accent: Universal.color(Universal.Violet)
+	property color background: Universal.color(Universal.Steel)
+	property color foreground: "White"//"White"//Universal.color(Universal.Brown)
+	property color accent: Universal.color(Universal.Olive)
 	
 }
 

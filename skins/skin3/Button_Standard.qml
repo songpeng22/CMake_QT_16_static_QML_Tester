@@ -15,11 +15,9 @@ Button
 	implicitHeight: config.varLineHeight
 
 	Universal.theme: Universal.Dark//Universal.theme: config.theme
-//	Universal.background: config.background
-	Universal.foreground: config.foreground
+	highlighted: true
 	Universal.accent: config.accent
-    
-	
-
+	Universal.background: config.background
+	Universal.foreground: config.foreground
 	
 }

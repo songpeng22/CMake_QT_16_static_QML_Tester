@@ -23,8 +23,9 @@ Rectangle
 		Button
 		{
 			text:"Click here"
-			Universal.background: Universal.Steel
-			Universal.accent: Universal.Orange
+//			Universal.background: Universal.Steel
+			highlighted: true
+			Universal.accent: Universal.Steel//Orange
 		}
 		
 		CheckBox
