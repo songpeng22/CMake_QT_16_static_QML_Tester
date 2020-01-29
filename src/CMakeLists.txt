@@ -310,10 +310,4 @@ add_custom_command(TARGET ${project_name}
 # Message Test
 message(STATUS "This is test: " ${Qt5Gui_LIBRARIES})
 
-# force_cmake_rebuild.py for "force cmnake rebuild everytime"
-message(STATUS "dir for force_cmake_rebuild.py::" ${Solution_SOURCE_DIR}/)
-execute_process(COMMAND python3 force_cmake_rebuild.py
-                WORKING_DIRECTORY ${Solution_SOURCE_DIR}/ RESULT_VARIABLE rv)
-message("force_cmake_rebuild.py return value='${rv}'")
-
 message( "***************************CMake End**********************************" )

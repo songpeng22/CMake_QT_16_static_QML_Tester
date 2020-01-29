@@ -85,13 +85,25 @@ int main(int argc, char *argv[])
 	QCoreApplication::setOrganizationName("Bizerba");
 	QCoreApplication::setApplicationName("QmlTester");
 	QCoreApplication::setOrganizationDomain("Bizerba.com");
-    //Python
-/*
-    QStringList arguments { "force_cmake_rebuild.py" };
+
+#if 1
+    //Python:force cmake to rebuild everytime
+    QString dirPath = QCoreApplication::applicationDirPath();
+    qDebug() << "app dir:" << dirPath;
+    if ( dirPath.at(dirPath.length() - 1) != "/" )
+        dirPath.append("/");
+    dirPath.append("../src/");
+    dirPath.append("force_cmake_rebuild.py");
+    QString pythonPath = dirPath;
+    qDebug() << "python path to execute:" << pythonPath;
+
+    QStringList arguments { pythonPath/*"force_cmake_rebuild.py"*/ };
     QProcess p;
     p.start("python3 ", arguments);
     p.waitForFinished();
-*/
+    QProcess::ExitStatus ret = p.exitStatus();
+    qDebug() << "QProcess exitStatus:" << ret;
+#endif
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
