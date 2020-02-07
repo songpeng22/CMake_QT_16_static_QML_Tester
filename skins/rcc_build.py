@@ -1,5 +1,6 @@
 #rcc_build.py
 import os
+import os.path
 import sys
 
 source_path = "skin"
@@ -8,7 +9,7 @@ target_path = "bin/"
 target_name = "skin"
 exe_path = "../bin/"
 index = 0
-cycle_count = 3
+cycle_count = 4
 
 command = "mkdir bin"
 ret = os.system( command )
@@ -19,24 +20,33 @@ print("mkdir ret:",ret)
 for index in range(1,1+cycle_count):  #(1,3) means cycle 2
     print("index:",index)    
     folder_name = source_path + str(index)
-    # qrc part
-    python_path = source_path + str(index) + "/" + "qrc_build.py"
-    print("python_path:",python_path)
+    # full path
     current_path = os.path.dirname(sys.argv[0])
     print( "os.path.dirName:",os.path.dirname(sys.argv[0]) )
+    # qrc part: generate skin.qrc
+#    python_path = source_path + str(index) + "/" + "qrc_build.py"
+#    print("python_path:",python_path)
     joinStr = os.path.join( current_path , folder_name ,"qrc_build.py" )
-    joinStr = "\"" + joinStr + "\""
-    print( "joinStr:",joinStr )
-    command = "python3 " + joinStr
+    pythonPath = "\"" + joinStr + "\""
+    print( "pythonPath:",pythonPath )
+    command = "python3 " + pythonPath
     print("command:",command)
-    joinStr = joinStr.replace( "\\","\\\\" )
-    print( "joinStr with \\\\:",joinStr )
+    commandPath = pythonPath.replace( "\\","\\\\" )
+    print( "commandPath with \\\\:",commandPath )
     # unicoe / raw string
 #    joinStr.encode('unicode_escape')
     # exec() hard to use even when I put a hand write path exec(r"D:\Test\qrc_build.py"), so choose os.system instead
 #    ret = exec(joinStr)
     ret = os.system( command )
-    print("exec ret:",ret)    
+    print("exec ret:",ret)
+    # rcc_build:if have build rcc_build.py to accomomplish all work
+    pythonPath = joinStr.replace( "qrc_build.py","rcc_build.py" )
+    command = command.replace( "qrc_build.py","rcc_build.py" )
+    if ( os.path.isfile(pythonPath) ):
+        print( "rcc_build.py file exist:", pythonPath )
+        ret = os.system( command )
+        print("exec ret:",ret)
+        continue
     # rcc part
     info = "src_path" + str(index) + ":"
     src_path = folder_name + "/" + source_name + ".qrc"    
