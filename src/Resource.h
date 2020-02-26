@@ -85,7 +85,7 @@ public:
         QString m_iniFileName = "main.ini";
         QString m_iniFilePath = "";
         QString m_skinUrl = "";
-        QString m_rccFileName = "";
+        QString m_rccFilePath = "";
         QString m_skinSource = "";
 
 		m_bIniSet = false;
@@ -107,12 +107,12 @@ public slots:
 	{
 		retrieveSkinUrl();
 		if (!isLoaded()) {
-			qDebug() << "load skinRccFileName direct from: " << getRccFileName();
-			loadSkin(getRccFileName());
+			qDebug() << "load skinRccFilePath direct from: " << getRccFilePath();
+			loadSkin(getRccFilePath());
 		}
 		else {
-			qDebug() << "change skin to skinRccFileName: " << getRccFileName();
-			changeSkin(getRccFileName());
+			qDebug() << "change skin to skinRccFilePath: " << getRccFilePath();
+			changeSkin(getRccFilePath());
 		}
 	}
 	//is skin loaded already
@@ -151,6 +151,14 @@ public slots:
         m_iniFilePath = iniFilePath;
         qDebug() << "-setIniFilePath::m_iniFilePath:" << m_iniFilePath;
     }
+    void setRccDirPath( QString rccDirPath ){
+        qDebug() << "+setRccDirPath::rccDirPath:" << rccDirPath;
+        if( rccDirPath.at(rccDirPath.length() - 1) != "/" )
+            rccDirPath.append("/");
+
+        m_rccDirPath = rccDirPath;
+        qDebug() << "-setIniDirPath::m_rccDirPath:" << m_rccDirPath;
+    }
 	//is ini file already set
 	bool isIniFileAlreadySet() { return m_bIniSet; }
 	void setIniReady(bool bReady) { m_bIniSet = bReady; }
@@ -182,12 +190,20 @@ private:
         }
     }
     //get rcc 
-    QString getRccFileName(){ 
-        if (!m_skinUrl.isEmpty() && !m_iniDirPath.isEmpty()){
-            m_rccFileName = m_iniDirPath + m_skinUrl;
-            qDebug() << "getRccFileName::m_rccFileName:" << m_rccFileName;
+    QString getRccFilePath(){ 
+        //if bin directory is different with ini directory, use bin directory as rcc directory
+        if (!m_skinUrl.isEmpty() && !m_rccDirPath.isEmpty()){
+            m_rccFilePath = m_rccDirPath + m_skinUrl;
+            qDebug() << "getRccFilePath::m_rccFilePath:" << m_rccFilePath;
 
-            return m_rccFileName;
+            return m_rccFilePath;
+        }
+        //if bin/rcc directory not set , use ini directory as rcc directory
+        else if (!m_skinUrl.isEmpty() && !m_iniDirPath.isEmpty()){
+            m_rccFilePath = m_iniDirPath + m_skinUrl;
+            qDebug() << "getRccFilePath::m_rccFilePath:" << m_rccFilePath;
+
+            return m_rccFilePath;
         }
         else
             return "";
@@ -222,7 +238,8 @@ private:
     QString m_iniFileName;
     QString m_iniFilePath;
     QString m_skinUrl;
-    QString m_rccFileName;
+    QString m_rccDirPath;
+    QString m_rccFilePath;
     QString m_skinSource;
 private:
     SettingsInner * settingsInner;

@@ -101,13 +101,14 @@ int main(int argc, char *argv[])
     QProcess p;
     p.start("python3 ", arguments);
     p.waitForFinished();
+    qDebug() << "python arguments:" << p.arguments();
     QProcess::ExitStatus ret = p.exitStatus();
     qDebug() << "QProcess exitStatus:" << ret;
 #endif
 	//Engine
 	qDebug() << "QuickViewReloaderWrapper";
 	QuickViewReloaderWrapper view;
-	QUrl url = QUrl(QStringLiteral("qrc:/Button_Standard_Test.qml"));//Universal_demo//Button_Standard_Test//CheckBox_Standard_Test//Label_Standard_Test//Material_demo//TextField_Standard_Test
+	QUrl url = QUrl(QStringLiteral("qrc:/TabBar_Standard_Test.qml"));//Universal_demo//TabBar_Standard_Test//Button_Standard_Test//CheckBox_Standard_Test//Label_Standard_Test//Material_demo//TextField_Standard_Test
 	view.load(url);
 
 	return app.exec();
