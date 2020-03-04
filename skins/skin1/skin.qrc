@@ -10,6 +10,9 @@
 	<file>Label_Standard_Test.qml</file>
 	<file>Rectangle_Standard.qml</file>
 	<file>Rectangle_Standard_Test.qml</file>
+	<file>TabBar_Standard.qml</file>
+	<file>TabBar_Standard_Test.qml</file>
+	<file>TabButton_Standard.qml</file>
 	<file>TextEdit_Standard.qml</file>
 	<file>TextEdit_Standard_Test.qml</file>
 	<file>TextField_Standard.qml</file>

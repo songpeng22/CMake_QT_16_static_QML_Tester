@@ -13,6 +13,26 @@ Rectangle
 	height: 400
 	color: "teal"
 	
+	Rectangle {
+        z: 1          //make z order bigger,than rectangle goes upper layer
+        color: "red"
+        width: 100; height: 100
+    }
+    Rectangle {
+        color: "blue"
+        x: 50; y: 50; width: 100; height: 100
+    }
+	
+	Rectangle {
+        color: "red"
+		x:200
+        width: 100; height: 100
+    }
+    Rectangle {
+        color: "blue"
+        x: 50 + 200; y: 50; width: 100; height: 100
+    }
+	
 	x: isItem(root) ? (console.log("100"),100) : 0
 	y: 0
 	z: 1
