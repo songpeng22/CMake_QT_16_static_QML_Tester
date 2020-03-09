@@ -174,7 +174,7 @@ Window {
 	Rectangle{
         id:idRect3
         objectName : "objRect3"
-        color: "teal"
+        color: "tan"
         height: parent.height / 3
         width : parent.width
 		anchors.top:idRect2.bottom

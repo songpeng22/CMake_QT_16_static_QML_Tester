@@ -11,7 +11,7 @@ Item {
     width: 800
     height: 600
 	
-	Config
+	ConfigBase
 	{
 		id:config
 	}

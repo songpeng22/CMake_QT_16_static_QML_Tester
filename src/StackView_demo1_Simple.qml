@@ -12,7 +12,7 @@ ApplicationWindow {
     visible: true
 
     StackView {
-        id: stack
+        id: stackView
         initialItem: mainView
         anchors.fill: parent
     }
@@ -25,17 +25,18 @@ ApplicationWindow {
 
             Button {
                 text: "Push"
-                onClicked: stack.push(mainView)
+                onClicked: stackView.push(mainView)
             }
             Button {
                 text: "Pop"
-                enabled: stack.depth > 1
-                onClicked: stack.pop()
+                enabled: stackView.depth > 1
+                onClicked: stackView.pop()
 
             }
             Text {
-                text: stack.depth
+                text: stackView.depth
             }
+			StackView.visible: true
         }
     }
 }
