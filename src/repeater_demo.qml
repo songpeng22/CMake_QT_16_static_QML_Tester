@@ -16,23 +16,40 @@ Item {
 		spacing: 3
 		
 		Repeater {
-			model: 4
+			id: idRepeater1
+			model: 4		
 			delegate: Row {
+				property int nRepeatIndex1: index
 				spacing: 3
 				
 				Repeater {
+					id: idRepeater2
 					model: 3
 					delegate: Rectangle {
+						//this nRepeatIndex2 can only be defined in content item of Repeater
+						property int nRepeatIndex2: index
 						width: 100; height: 40
 						border.width: 1
 						color: "#212121"
 						radius: 5
-						Text { 
-							id: text
-							anchors.centerIn: parent
-							text: "Data" 
-							color: "white"
+						
+						
+						Button
+						{
+							contentItem: Text { 
+								id: text
+								anchors.centerIn: parent
+								text: "Data" 
+								color: "white"
+							}
 							
+							onClicked:
+							{
+								console.log("index:",index);
+								console.log("nRepeatIndex1:",nRepeatIndex1);
+								console.log("nRepeatIndex2:",nRepeatIndex2);
+								
+							}
 						}
 					}
 					Component.onCompleted: console.log( "Repeater count: ",count);

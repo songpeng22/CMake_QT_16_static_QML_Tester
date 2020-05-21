@@ -23,9 +23,17 @@ Rectangle {
         y: (root.height - height) / 2
         width: 200
         height: 300
-        modal: true
-        focus: true
+		margins: 0
+		padding: 10
+//        modal: true
+//       focus: true
 //		anchors.centerIn: parent
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+		
+		Rectangle
+		{
+			anchors.fill: parent
+			color: "red"
+		}
     }
 }

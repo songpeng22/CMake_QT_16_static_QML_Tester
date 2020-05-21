@@ -1,5 +1,5 @@
 message( "***************************CMake Start**********************************" )
-# CMake Settings1234567890 12345678
+# CMake Settings1234567890 1234567
 cmake_minimum_required(VERSION 3.1.0)
 # CMake Global Settings
 message( "---------------------------Global Settings----------------------------------" )
