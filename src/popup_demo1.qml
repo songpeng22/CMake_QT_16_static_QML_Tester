@@ -25,7 +25,7 @@ Rectangle {
         height: 300
 		margins: 0
 		padding: 10
-//        modal: true
+        modal: true
 //       focus: true
 //		anchors.centerIn: parent
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
