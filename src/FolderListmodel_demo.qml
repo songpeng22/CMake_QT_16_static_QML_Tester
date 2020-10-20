@@ -16,7 +16,11 @@ ListView {
 
     Component {
         id: fileDelegate
-        Text { text: fileName }
+        Text 
+		{ 
+			text: filePath 
+			color: "red"
+		}
     }
 
     model: folderModel
