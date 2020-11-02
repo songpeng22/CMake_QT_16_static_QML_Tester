@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ======================================================================================== -->
+<!--  Bizerba GmbH & Co.KG                                                                    -->
+<!--  Configuration for Serivce Stick                                                         -->
+<!--  Version: 1.10  Date: 18.11.2012                                                         -->
+<!--  Autor  : Gerhard Schatz                                                                 -->
+<!--  Edited : Simon Flaig                                                                    -->
+<!--           1.11  Date: 18.09.18 added filters for scale types and boot mode               -->
+<!-- ======================================================================================== -->
+<!--  allowed values for "Scales" separated by ';'                                            -->
+<!--  (see script startRetailScaleServiceStick.bat):                                          -->
+<!--      KHII                                                                                -->
+<!--      KHIIPro                                                                             -->
+<!--      XC                                                                                  -->
+<!--      XCIIPro                                                                             -->
+<!--  allowed values for "OnlyInBootMode":                                                    -->
+<!--      BIOS                                                                                -->
+<!--      UEFI                                                                                -->
+<!-- ======================================================================================== -->
+<parameterStore>
+	<include name="rsss.language.cfg.xml"/>
+	<!-- Path  -->
+	<variable name="ROOT_PATH" value="./"/>
+	<variable name="SCRIPT_PATH" value="$(ROOT_PATH)/scripts"/>
+	<variable name="LOG_PATH" value="$(ROOT_PATH)/logs"/>
+	<variable name="VERSION" value="3.00.0005"/>
+	<variable name="LANGUAGE" value="eng" description="Current language set: 2020.10.26 at 16:15:15 "/>
+	<key name="COMMON">
+		<key name="function1">
+			<data name="Name" value="Install Windows Scale"/>
+			<data name="Path" value="install_start_w.cmd"/>
+			<data name="LogFile" value="install_windows.log"/>
+		</key>
+		<key name="function2">
+			<data name="Name" value="Install Linux Scale"/>
+			<data name="Path" value="install_start_l.cmd"/>
+			<data name="LogFile" value="install_linux.log"/>
+		</key>
+		<key name="function3">
+			<data name="Name" value="Backup Disk"/>
+			<data name="Path" value="backup_start.cmd"/>
+			<data name="LogFile" value="Backup.log"/>
+		</key>
+		<key name="function4">
+			<data name="Name" value="Restore Disk"/>
+			<data name="Path" value="restore_start_disk.cmd"/>
+			<data name="LogFile" value="Restore_.log"/>
+		</key>
+		<key name="function5">
+			<data name="Name" value="Command Shell"/>
+			<data name="Path" value="start_cmd.cmd"/>
+		</key>
+		<key name="function6">
+			<data name="Name" value="Acronis GUI"/>
+			<data name="Path" value="start_acronis_GUI.cmd"/>
+		</key>
+		<key name="function7">
+			<data name="Name" value="Create new Servicestick"/>
+			<data name="Path" value="mk_stick_start.cmd"/>
+			<data name="LogFile" value="mk_stick.log"/>
+		</key>
+		<key name="function8">
+			<data name="Name" value="BIOS Update/Config"/>
+			<data name="Path" value="start_bizupdatebios.cmd"/>
+			<data name="LogFile" value="bios.log"/>
+			<data name="Scales" value="KHII;KHIIPro;XCIIPro"/>
+		</key>
+		<key name="function9">
+			<data name="Name" value="Voltage and Temp. Check"/>
+			<data name="Path" value="start_volttempcheck.cmd"/>
+			<data name="LogFile" value="volttempcheck.log"/>
+		</key>
+		<key name="function10">
+			<data name="Name" value="Touch Reaction Test"/>
+			<data name="Path" value="start_touchtest.cmd"/>
+		</key>
+		<key name="function11">
+			<data name="Name" value="Memory Test"/>
+			<data name="Path" value="start_memtest.cmd"/>
+			<data name="OnlyInBootMode" value="UEFI"/>
+		</key>
+		<key name="function12">
+			<data name="Name" value="SSD Test"/>
+			<data name="Path" value="start_ssdtest.cmd"/>
+			<data name="LogFile" value="SSD_Test_SMART_Values.log"/>
+			<data name="OnlyInBootMode" value="UEFI"/>
+		</key>
+	</key>
+</parameterStore>

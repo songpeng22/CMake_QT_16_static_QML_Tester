@@ -26,6 +26,7 @@ Item
 		onClicked:
 		{
 			console.log("title:",xmlModel.get(0).title);
+			console.log("name:",xmlModel.get(0).key);
 			console.log("name:",xmlModel.get(0).name);
 		}
 	}
