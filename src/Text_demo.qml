@@ -131,7 +131,7 @@ Rectangle
             name: "align bottom"
         }
 		ListElement {
-            name: "test7"
+            name: "wrap test"
         }
         ListElement {
             name: "test8" 
@@ -172,7 +172,9 @@ Rectangle
 	}
 	function function_test7()
 	{
-		
+		idText.text = "Creates a backup of the scale. The image will be stored in folder Backup"
+		idText.wrapMode = Text.WordWrap
+		idText.font.pointSize = 20
 	}
 	
 	function function_test8()

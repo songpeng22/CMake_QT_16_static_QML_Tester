@@ -3,6 +3,7 @@
 # ignore build folder
 build*/
 [Oo]bj/
+0_Backup/
 # ignore tmp folder
 [Tt]mp
 # Prerequisites
