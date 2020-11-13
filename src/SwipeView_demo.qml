@@ -18,6 +18,7 @@ Rectangle
 		currentIndex: 1
 		anchors.fill: parent
 		orientation: Qt.Vertical
+//		interactive: false
 
 		Rectangle {
 			id: firstPage
@@ -45,7 +46,7 @@ Rectangle
 		
 		interactive: false //too small to interactive
 		
-		orientation: Qt.Vertical
+//		orientation: Qt.Vertical
 	}
 	
 }
