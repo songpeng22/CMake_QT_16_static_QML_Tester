@@ -12,13 +12,7 @@ Window {
     title: qsTr("Hello World")
 
     Component.onCompleted: {
-//        var JsonString = '{"a":"A whatever, run","b":"B fore something happens"}';
-		var JsonString = "{
-    "exitCode": "0",
-    "job": "utils",
-    "param": "sudo ./Scripts/utils.sh printUSBDevices",
-    "result": "3\n"
-}"
+        var JsonString = '{"a":"A whatever, run","b":"B fore something happens"}';
         var JsonObject= JSON.parse(JsonString);
 
         //retrieve values from JSON again
