@@ -14,10 +14,6 @@ Rectangle
 		id: flick
 		width: 150; height: 150
 		contentWidth: 150; contentHeight: 300
-//			visibleArea.xPosition: 0
-//			visibleArea.yPosition: 0
-//			visibleArea.widthRatio: 1.0
-//			visibleArea.heightRatio: 1.0
 
 		clip: true
 		interactive: false
@@ -50,16 +46,7 @@ Rectangle
 			PropertyAnimation { 
 				signal test()
 				easing.type: Easing.OutCubic; 
-				duration: 900; 
-				
-				onStarted:
-				{
-					console.log("animation onStarted");  //not work
-				}
-				onStopped: 
-				{
-					console.log("animation finished"); 	//not work
-				}
+				duration: 900;
 				
 				onRunningChanged:						//work
 				{ 
@@ -78,15 +65,6 @@ Rectangle
 				}
 			}
 		}
-		
-		Component.onCompleted:
-		{
-			console.log( "visibleArea.xPosition:",visibleArea.xPosition );
-			console.log( "visibleArea.yPosition:",visibleArea.yPosition );			
-			console.log( "visibleArea.widthRatio:",visibleArea.widthRatio );
-			console.log( "visibleArea.heightRatio:",visibleArea.heightRatio );
-		}
-
 	}
 
 	
