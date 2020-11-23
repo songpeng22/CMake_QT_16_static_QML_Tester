@@ -12,18 +12,21 @@ Rectangle
 	height: 400
 	color: "teal"
 	
-	Button
+	Connections_demo2_customized_signal
 	{
-		id: button
-		text: "test"
+		id: questionDialog
 	}
 	
 	Connections {
-		target: button
-		onClicked: 
+		target: questionDialog
+		onYes: 
 		{ 
-			console.log("button clicked."); 
+			console.log("onYes clicked."); 
+		}
+		
+		onNo: 
+		{ 
+			console.log("onNo clicked."); 
 		}
 	}
-
 }
