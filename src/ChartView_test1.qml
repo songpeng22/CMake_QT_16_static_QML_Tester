@@ -27,7 +27,7 @@ Rectangle
 			id: barSeries
 			axisX: ValueAxis{ min:0; max: 100; }
 			axisY: BarCategoryAxis { categories: ["CPU Board Temp.1", "CPU Board Temp.2", "CPU Board Temp.3", "CPU", "GPU", ] }
-			BarSet { label: "Bob"; values: [12, 22, 33, 44, 55] }
+			BarSet { label: "Temperature"; values: [12, 22, 33, 44, 55] }
 			
 			onBarsetsAdded:
 			{
@@ -46,7 +46,7 @@ Rectangle
 		onClicked:{
 		    barSeries.clear();
 //			barSeries.append("abc",[22, 12, 43, 4, 55])
-			barSeries.append("abc",[getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100)])
+			barSeries.append("Temperature",[getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100)])
 
 		}
 	}
@@ -59,7 +59,7 @@ Rectangle
 		onTriggered:
 		{
 		    barSeries.clear();
-			barSeries.append("abc",[getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100)])	
+			barSeries.append("Temperature",[getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100), getRandomInt(100)])	
 		}
 	}
 	
